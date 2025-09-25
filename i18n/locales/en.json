@@ -1,0 +1,66 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "analytics": "Analytics",
+    "projects": "Projects",
+    "team": "Team",
+    "settings": "Settings",
+    "help": "Help"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome to your control panel",
+    "createNew": "Create new",
+    "metrics": {
+      "totalUsers": "Total users",
+      "revenue": "Revenue",
+      "activeProjects": "Active projects",
+      "completedTasks": "Completed tasks",
+      "lastMonth": "from last month",
+      "thisWeek": "new this week",
+      "lastWeek": "from last week"
+    },
+    "recentActivity": {
+      "title": "Recent activity",
+      "userCreatedProject": "created a new project",
+      "userCompletedTask": "completed a task",
+      "userUploadedFiles": "uploaded files",
+      "timeAgo": {
+        "hoursAgo": "{hours} hours ago",
+        "yesterday": "Yesterday"
+      }
+    },
+    "upcomingTasks": {
+      "title": "Upcoming tasks",
+      "reviewProposal": "Review client proposal",
+      "updateDocs": "Update documentation",
+      "teamMeeting": "Team meeting",
+      "dueTomorrow": "Due tomorrow",
+      "dueInDays": "Due in {days} days",
+      "fridayMeeting": "Friday 10:00 AM",
+      "status": {
+        "pending": "Pending",
+        "inProgress": "In progress",
+        "scheduled": "Scheduled"
+      }
+    }
+  },
+  "login": {
+    "validations": {
+      "emailRequired": "El correo electrónico es obligatorio",
+      "emailInvalid": "El correo electrónico no es válido",
+      "passwordRequired": "La contraseña es obligatoria",
+      "passwordMinLength": "La contraseña debe tener al menos 8 caracteres"
+    }
+  },
+  "user": {
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "common": {
+    "search": "Search",
+    "notifications": "Notifications",
+    "language": "Language"
+  }
+}

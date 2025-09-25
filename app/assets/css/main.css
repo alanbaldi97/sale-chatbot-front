@@ -1,0 +1,629 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+/* ===== PALETAS DE COLORES PERSONALIZADAS ===== */
+/* Descomenta la paleta que prefieras */
+
+/* 🔵 PALETA 1: Azul Moderno (Activa por defecto) */
+/* :root {
+  --color-primary-50: 239 246 255;
+  --color-primary-100: 219 234 254;
+  --color-primary-200: 191 219 254;
+  --color-primary-300: 147 197 253;
+  --color-primary-400: 96 165 250;
+  --color-primary-500: 59 130 246;
+  --color-primary-600: 37 99 235;
+  --color-primary-700: 29 78 216;
+  --color-primary-800: 30 64 175;
+  --color-primary-900: 30 58 138;
+} */
+
+/* 🟣 PALETA 2: Púrpura Elegante */
+
+/* :root {
+  --color-primary-50: 250 245 255;
+  --color-primary-100: 243 232 255;
+  --color-primary-200: 233 213 255;
+  --color-primary-300: 216 180 254;
+  --color-primary-400: 196 181 253;
+  --color-primary-500: 168 85 247;
+  --color-primary-600: 147 51 234;
+  --color-primary-700: 126 34 206;
+  --color-primary-800: 107 33 168;
+  --color-primary-900: 88 28 135;
+} */
+
+
+/* 🟢 PALETA 3: Verde Naturaleza */
+
+/* :root {
+  --color-primary-50: 240 253 244;
+  --color-primary-100: 220 252 231;
+  --color-primary-200: 187 247 208;
+  --color-primary-300: 134 239 172;
+  --color-primary-400: 74 222 128;
+  --color-primary-500: 34 197 94;
+  --color-primary-600: 22 163 74;
+  --color-primary-700: 21 128 61;
+  --color-primary-800: 22 101 52;
+  --color-primary-900: 20 83 45;
+} */
+
+
+/* 🔴 PALETA 4: Rojo Vibrante */
+
+/* :root {
+  --color-primary-50: 254 242 242;
+  --color-primary-100: 254 226 226;
+  --color-primary-200: 254 202 202;
+  --color-primary-300: 252 165 165;
+  --color-primary-400: 248 113 113;
+  --color-primary-500: 239 68 68;
+  --color-primary-600: 220 38 38;
+  --color-primary-700: 185 28 28;
+  --color-primary-800: 153 27 27;
+  --color-primary-900: 127 29 29;
+} */
+
+
+/* 🟠 PALETA 5: Naranja Energético */
+
+/* :root {
+  --color-primary-50: 255 247 237;
+  --color-primary-100: 255 237 213;
+  --color-primary-200: 254 215 170;
+  --color-primary-300: 253 186 116;
+  --color-primary-400: 251 146 60;
+  --color-primary-500: 249 115 22;
+  --color-primary-600: 234 88 12;
+  --color-primary-700: 194 65 12;
+  --color-primary-800: 154 52 18;
+  --color-primary-900: 124 45 18;
+} */
+
+
+/* � PALETA 7: Azul Corporativo Personalizado (Basada en tu imagen) */
+
+:root {
+  --color-primary-50: 240 248 255;   /* Azul muy claro complementario */
+  --color-primary-100: 219 234 254;  /* Azul claro complementario */
+  --color-primary-200: 191 219 254;  /* Azul claro suave */
+  --color-primary-300: 45 119 186;   /* #2D77BA - Azul claro de tu paleta */
+  --color-primary-400: 34 103 168;   /* #2267A8 - Azul medio de tu paleta */
+  --color-primary-500: 23 88 150;    /* #175896 - Azul principal de tu paleta */
+  --color-primary-600: 11 72 132;    /* #0B4884 - Azul oscuro de tu paleta */
+  --color-primary-700: 0 56 114;     /* #003872 - Azul muy oscuro de tu paleta */
+  --color-primary-800: 0 45 91;      /* Azul más oscuro complementario */
+  --color-primary-900: 0 35 70;      /* Azul más profundo complementario */
+}
+
+
+/* Aplicar colores personalizados a elementos específicos */
+.bg-primary {
+  background-color: rgb(var(--color-primary-500));
+}
+
+.text-primary {
+  color: rgb(var(--color-primary-600));
+}
+
+.border-primary {
+  border-color: rgb(var(--color-primary-500));
+}
+
+/* Hover states */
+.hover\:bg-primary:hover {
+  background-color: rgb(var(--color-primary-600));
+}
+
+.hover\:text-primary:hover {
+  color: rgb(var(--color-primary-700));
+}
+
+/* ===== ESTILOS GLOBALES PARA BOTONES ===== */
+button,
+.btn,
+[role="button"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+a[role="button"],
+[data-headlessui-state],
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+div[role="button"],
+span[role="button"] {
+  cursor: pointer !important;
+}
+
+*[class*="button"],
+*[class*="btn"] {
+  cursor: pointer !important;
+}
+
+button:disabled,
+.btn:disabled,
+[role="button"]:disabled,
+input:disabled,
+*[disabled] {
+  cursor: not-allowed !important;
+}
+
+button:not(:disabled):hover,
+.btn:not(:disabled):hover,
+[role="button"]:not(:disabled):hover {
+  cursor: pointer !important;
+}
+
+/* ===== EFECTOS DE CLICK GLOBALES PARA BOTONES ===== */
+/* Efecto de click para todos los botones */
+button:not(:disabled):not([type="checkbox"]):not([type="radio"]),
+.btn:not(:disabled),
+[role="button"]:not(:disabled),
+input[type="button"]:not(:disabled),
+input[type="submit"]:not(:disabled),
+input[type="reset"]:not(:disabled),
+a[role="button"]:not(:disabled) {
+  transition: all 0.15s ease-in-out !important;
+  user-select: none !important;
+}
+
+button:not(:disabled):not([type="checkbox"]):not([type="radio"]):active,
+.btn:not(:disabled):active,
+[role="button"]:not(:disabled):active,
+input[type="button"]:not(:disabled):active,
+input[type="submit"]:not(:disabled):active,
+input[type="reset"]:not(:disabled):active,
+a[role="button"]:not(:disabled):active {
+  transform: scale(0.95) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Efecto especial para botones primarios */
+button[color="primary"]:not(:disabled):active,
+button[data-color="primary"]:not(:disabled):active,
+.btn-primary:not(:disabled):active,
+button.bg-primary:not(:disabled):active {
+  transform: scale(0.95) !important;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Efecto para badges/pills también */
+.rounded-full:active,
+div[class*="rounded-full"]:active {
+  transform: scale(0.98) !important;
+  transition: transform 0.1s ease-in-out !important;
+}
+
+/* ===== ESTILOS PARA CONTRASTE CON FONDO OSCURO ===== */
+/* Mejores contrastes para el tema oscuro con fondo slate */
+.dark {
+  /* Cards y paneles más claros para contrastar */
+  --tw-bg-opacity: 1;
+}
+
+/* Cards con mejor contraste */
+.dark .bg-white {
+  background-color: rgb(30 41 59) !important; /* slate-800 sólido */
+  border: 1px solid rgb(51 65 85) !important; /* slate-600 sólido */
+}
+
+/* Texto en cards oscuras */
+.dark .text-slate-900 {
+  color: rgb(226 232 240) !important; /* slate-200 */
+}
+
+.dark .text-slate-600 {
+  color: rgb(148 163 184) !important; /* slate-400 */
+}
+
+/* Números y métricas más destacados */
+.dark .text-2xl,
+.dark .text-3xl,
+.dark .text-4xl {
+  color: rgb(var(--color-primary-400)) !important;
+  font-weight: 600;
+}
+
+/* Bordes más sutiles */
+.dark .border-slate-200 {
+  border-color: rgb(51 65 85) !important; /* slate-600 sólido */
+}
+
+/* Headers y sidebar sólidos */
+.dark header {
+  background-color: rgb(15 23 42) !important; /* slate-900 sólido */
+  border-bottom: 1px solid rgb(51 65 85);
+}
+
+/* Efectos de hover mejorados */
+.dark .hover\:bg-slate-50:hover {
+  background-color: rgb(51 65 85) !important;
+}
+
+/* ===== BOTONES EN MODO OSCURO - TEXTOS MÁS CLAROS ===== */
+/* Todos los botones con texto más visible */
+.dark button,
+.dark .btn,
+.dark [role="button"],
+.dark input[type="button"],
+.dark input[type="submit"],
+.dark input[type="reset"],
+.dark a[role="button"] {
+  color: rgb(248 250 252) !important; /* Blanco puro para máxima visibilidad */
+}
+
+/* Botones específicos de Nuxt UI */
+.dark [data-headlessui-state],
+.dark [data-headlessui-state] span,
+.dark .button,
+.dark .ui-button {
+  color: rgb(248 250 252) !important; /* Blanco puro */
+}
+
+/* Botones del header y navegación */
+.dark header button,
+.dark nav button,
+.dark aside button,
+.dark .sidebar button {
+  color: rgb(226 232 240) !important; /* slate-200 - muy claro */
+}
+
+
+/* Botones primarios y de acción */
+.dark .bg-primary,
+.dark .bg-blue-500,
+.dark .bg-blue-600,
+.dark [color="primary"] {
+  color: rgb(255 255 255) !important; /* Blanco absoluto */
+}
+
+/* Texto en dropdowns y menús */
+.dark .dropdown-menu,
+.dark [role="menu"],
+.dark [role="menuitem"] {
+  color: rgb(248 250 252) !important;
+}
+
+/* Links y elementos interactivos */
+.dark a,
+.dark .link,
+.dark .text-link {
+  color: rgb(var(--color-primary-300)) !important; /* Azul claro */
+}
+
+/* ===== MENÚ SIDEBAR - TEXTOS MÁS VISIBLES ===== */
+/* Todos los elementos del sidebar con máxima visibilidad */
+.dark aside,
+.dark .sidebar,
+.dark nav {
+  background-color: rgb(15 23 42) !important; /* slate-900 sólido */
+}
+
+/* Textos del menú del sidebar */
+.dark aside a,
+.dark .sidebar a,
+.dark nav a,
+.dark aside span,
+.dark .sidebar span,
+.dark nav span {
+  color: rgb(248 250 252) !important; /* Blanco casi puro */
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+/* Elementos activos del menú */
+.dark aside .router-link-active,
+.dark .sidebar .router-link-active,
+.dark nav .router-link-active,
+.dark aside .active,
+.dark .sidebar .active,
+.dark nav .active {
+  color: rgb(var(--color-primary-300)) !important; /* Azul claro */
+  background-color: rgba(59, 130, 246, 0.15) !important;
+  border-left: 3px solid rgb(var(--color-primary-400)) !important;
+}
+
+/* Hover en elementos del menú */
+.dark aside a:hover,
+.dark .sidebar a:hover,
+.dark nav a:hover {
+  color: rgb(255 255 255) !important; /* Blanco absoluto */
+  background-color: rgba(59, 130, 246, 0.1) !important;
+  transform: translateX(4px);
+}
+
+nav a:hover {
+  transform: translateX(4px);
+}
+
+/* Iconos del menú del sidebar */
+.dark aside svg,
+.dark .sidebar svg,
+.dark nav svg,
+.dark aside .icon,
+.dark .sidebar .icon,
+.dark nav .icon {
+  color: rgb(156 163 175) !important; /* gray-400 */
+}
+
+/* Iconos en hover */
+.dark aside a:hover svg,
+.dark .sidebar a:hover svg,
+.dark nav a:hover svg,
+.dark aside a:hover .icon,
+.dark .sidebar a:hover .icon,
+.dark nav a:hover .icon {
+  color: rgb(var(--color-primary-300)) !important; /* Azul claro */
+}
+
+/* Títulos de sección en el sidebar */
+.dark aside h3,
+.dark .sidebar h3,
+.dark nav h3,
+.dark aside .text-xs,
+.dark .sidebar .text-xs,
+.dark nav .text-xs {
+  color: rgb(156 163 175) !important; /* gray-400 */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ===== CARDS MÁS REDONDEADAS ===== */
+/* Hacer todas las cards más redondeadas globalmente */
+
+/* UCard components de Nuxt UI */
+[class*="card"],
+.card,
+div[class*="rounded"]:not(.rounded-full):not(.rounded-md):not(.rounded-sm),
+.bg-white:not(button):not(input):not(textarea),
+.bg-slate-50:not(button):not(input):not(textarea),
+.dark .bg-slate-800:not(button):not(input):not(textarea),
+.dark .bg-slate-900:not(button):not(input):not(textarea) {
+  border-radius: 1.5rem !important; /* rounded-3xl equivalente */
+}
+
+/* Cards específicas del dashboard - más redondeadas */
+main .bg-white,
+main [class*="bg-white"],
+main .rounded-lg,
+main .rounded-xl,
+main .rounded-2xl,
+.grid .bg-white,
+.grid [class*="bg-white"] {
+  border-radius: 2rem !important; /* rounded-[2rem] - extra redondeadas */
+}
+
+/* Elementos internos de cards también más redondeados */
+.card .rounded-lg,
+.card .rounded-xl,
+[class*="card"] .rounded-lg,
+[class*="card"] .rounded-xl,
+main .rounded-lg,
+main .rounded-xl {
+  border-radius: 1.25rem !important; /* rounded-2xl */
+}
+
+/* Contenedores de íconos en cards más redondeados */
+main .p-4.bg-gradient-to-br,
+.card .p-4.bg-gradient-to-br,
+[class*="card"] .p-4.bg-gradient-to-br {
+  border-radius: 1.5rem !important; /* rounded-3xl */
+}
+
+/* Badges y elementos pequeños más redondeados */
+.rounded-full,
+.px-3,
+span[class*="px-3"],
+div[class*="px-3"][class*="py-1"] {
+  border-radius: 1rem !important; /* más redondeado que rounded-full estándar */
+}
+
+/* Excepciones para elementos que deben mantener su forma */
+.rounded-sm,
+input,
+textarea,
+select,
+button.rounded-sm,
+.btn.rounded-sm {
+  border-radius: 0.375rem !important; /* mantener rounded-sm */
+}
+
+.rounded-md,
+button.rounded-md,
+.btn.rounded-md {
+  border-radius: 0.5rem !important; /* mantener rounded-md */
+}
+
+/* ===== SOMBRAS SOLO PARA CARDS (EXCLUYENDO SIDEBAR) ===== */
+/* Sombras elegantes solo para cards principales */
+.card,
+[class*="card"]:not(nav *):not(.sidebar *):not(aside *),
+.bg-white:not(nav *):not(.sidebar *):not(aside *),
+.bg-slate-50:not(nav *):not(.sidebar *):not(aside *),
+.rounded-lg:not(nav *):not(.sidebar *):not(aside *):not(nav):not(.sidebar):not(aside),
+.rounded-xl:not(nav *):not(.sidebar *):not(aside *):not(nav):not(.sidebar):not(aside),
+.rounded-2xl:not(nav *):not(.sidebar *):not(aside *):not(nav):not(.sidebar):not(aside),
+div[class*="bg-white"]:not(nav *):not(.sidebar *):not(aside *),
+main .rounded-lg,
+main .rounded-xl,
+main .rounded-2xl,
+main .bg-white,
+main [class*="card"] {
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.1),
+    0 1px 2px rgba(0, 0, 0, 0.06) !important;
+  transition: box-shadow 0.2s ease-in-out !important;
+}
+
+/* Sombras mejoradas en hover solo para cards */
+.card:hover,
+[class*="card"]:not(nav *):not(.sidebar *):not(aside *):hover,
+.bg-white:not(nav *):not(.sidebar *):not(aside *):hover,
+.bg-slate-50:not(nav *):not(.sidebar *):not(aside *):hover,
+.rounded-lg:not(nav *):not(.sidebar *):not(aside *):not(nav):not(.sidebar):not(aside):hover,
+.rounded-xl:not(nav *):not(.sidebar *):not(aside *):not(nav):not(.sidebar):not(aside):hover,
+.rounded-2xl:not(nav *):not(.sidebar *):not(aside *):not(nav):not(.sidebar):not(aside):hover,
+div[class*="bg-white"]:not(nav *):not(.sidebar *):not(aside *):hover,
+main .rounded-lg:hover,
+main .rounded-xl:hover,
+main .rounded-2xl:hover,
+main .bg-white:hover,
+main [class*="card"]:hover {
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.07),
+    0 2px 4px rgba(0, 0, 0, 0.06),
+    0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Sombras específicas para modo oscuro solo en cards */
+.dark .card,
+.dark [class*="card"]:not(nav *):not(.sidebar *):not(aside *),
+.dark .bg-white:not(nav *):not(.sidebar *):not(aside *),
+.dark .bg-slate-50:not(nav *):not(.sidebar *):not(aside *),
+.dark .rounded-lg:not(nav *):not(.sidebar *):not(aside *):not(nav):not(.sidebar):not(aside),
+.dark .rounded-xl:not(nav *):not(.sidebar *):not(aside *):not(nav):not(.sidebar):not(aside),
+.dark .rounded-2xl:not(nav *):not(.sidebar *):not(aside *):not(nav):not(.sidebar):not(aside),
+.dark div[class*="bg-white"]:not(nav *):not(.sidebar *):not(aside *),
+.dark main .rounded-lg,
+.dark main .rounded-xl,
+.dark main .rounded-2xl,
+.dark main .bg-white,
+.dark main [class*="card"] {
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 1px 3px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Sombras mejoradas en hover para modo oscuro solo en cards */
+.dark .card:hover,
+.dark [class*="card"]:not(nav *):not(.sidebar *):not(aside *):hover,
+.dark .bg-white:not(nav *):not(.sidebar *):not(aside *):hover,
+.dark .bg-slate-50:not(nav *):not(.sidebar *):not(aside *):hover,
+.dark .rounded-lg:not(nav *):not(.sidebar *):not(aside *):not(nav):not(.sidebar):not(aside):hover,
+.dark .rounded-xl:not(nav *):not(.sidebar *):not(aside *):not(nav):not(.sidebar):not(aside):hover,
+.dark .rounded-2xl:not(nav *):not(.sidebar *):not(aside *):not(nav):not(.sidebar):not(aside):hover,
+.dark div[class*="bg-white"]:not(nav *):not(.sidebar *):not(aside *):hover,
+.dark main .rounded-lg:hover,
+.dark main .rounded-xl:hover,
+.dark main .rounded-2xl:hover,
+.dark main .bg-white:hover,
+.dark main [class*="card"]:hover {
+  box-shadow: 
+    0 6px 12px rgba(0, 0, 0, 0.4),
+    0 3px 6px rgba(0, 0, 0, 0.3),
+    0 1px 4px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ===== ESTILOS DE FOCUS CORPORATIVOS - AZUL TEMPLATE ===== */
+/* Override del focus por defecto para usar la paleta azul corporativa */
+
+/* Focus específico para inputs con clases de Nuxt UI - Mayor especificidad */
+div input:focus,
+div textarea:focus,
+div select:focus,
+.relative input:focus,
+.relative textarea:focus,
+[class*="input"] input:focus,
+[class*="form"] input:focus,
+form input:focus,
+form textarea:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgb(23 88 150), 0 0 0 1px rgb(23 88 150) !important;
+}
+
+/* FOCUS EN MODO OSCURO - FORZADO CON MÁXIMA ESPECIFICIDAD */
+.dark input:focus,
+.dark input:focus-visible,
+.dark textarea:focus,
+.dark textarea:focus-visible,
+.dark select:focus,
+.dark select:focus-visible,
+.dark [role="textbox"]:focus,
+.dark [role="combobox"]:focus,
+.dark [data-headlessui-state="open"] input,
+.dark .ui-input:focus,
+.dark .ui-textarea:focus,
+.dark .ui-select:focus,
+.dark .focus-within:focus-within,
+.dark div input:focus,
+.dark div textarea:focus,
+.dark .relative input:focus,
+.dark .relative textarea:focus,
+.dark [class*="input"] input:focus,
+.dark [class*="form"] input:focus,
+.dark form input:focus,
+.dark form textarea:focus {
+  border: 1px solid rgb(34 211 238) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 1px rgb(34 211 238), 0 0 0 3px rgba(34 211 238, 0.3) !important;
+  --tw-ring-width: 1px !important;
+  --tw-ring-color: rgb(34 211 238) !important;
+  --tw-ring-opacity: 1 !important;
+  --tw-border-opacity: 1 !important;
+}
+
+/* OVERRIDE ULTRA ESPECÍFICO PARA NUXT UI */
+.dark [data-headlessui-state] input:focus,
+.dark [class*="ui-"] input:focus,
+.dark .relative.space-y-2 input:focus,
+.dark .transition-all input:focus,
+.dark input[type="email"]:focus,
+.dark input[type="password"]:focus,
+.dark input[type="text"]:focus,
+.dark input[class*="h-12"]:focus,
+.dark input[class*="size-lg"]:focus {
+  border: 1px solid rgb(34 211 238) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 1px rgb(34 211 238), 0 0 0 3px rgba(34 211 238, 0.3) !important;
+}
+
+/* Override para quitar cualquier ring o outline de Tailwind */
+*:focus,
+*:focus-visible {
+  outline: none !important;
+}
+
+/* Específico para elementos que usan focus-visible */
+.focus\:ring-blue-500:focus,
+.focus\:ring-green-500:focus,
+.focus\:border-blue-500:focus,
+.focus\:border-green-500:focus,
+.focus-visible\:ring-blue-500:focus-visible,
+.focus-visible\:ring-green-500:focus-visible {
+  border-color: rgb(var(--color-primary-500)) !important;
+}
+
+.dark .focus\:ring-blue-500:focus,
+.dark .focus\:ring-green-500:focus,
+.dark .focus\:border-blue-500:focus,
+.dark .focus\:border-green-500:focus,
+.dark .focus-visible\:ring-blue-500:focus-visible,
+.dark .focus-visible\:ring-green-500:focus-visible {
+  border-color: rgb(34 211 238) !important; /* Cyan delgado para overrides */
+  box-shadow: 0 0 0 1px rgb(34 211 238), 0 0 0 3px rgba(34 211 238, 0.3) !important;
+}
+
+/* OVERRIDE FINAL - MÁXIMA ESPECIFICIDAD */
+.dark input:focus {
+  border: 1px solid rgb(34 211 238) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 1px rgb(34 211 238), 0 0 0 3px rgba(34 211 238, 0.3) !important;
+}
+
+.dark textarea:focus {
+  border: 1px solid rgb(34 211 238) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 1px rgb(34 211 238), 0 0 0 3px rgba(34 211 238, 0.3) !important;
+}
+
+textarea#chat-input:focus {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}

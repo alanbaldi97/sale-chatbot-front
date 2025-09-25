@@ -1,0 +1,197 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "analytics": "Análisis",
+    "projects": "Proyectos",
+    "team": "Equipo",
+    "settings": "Configuración",
+    "help": "Ayuda",
+    "products": "Productos",
+    "faqs": "Preguntas Frecuentes",
+    "chat": "Probar Chat"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Bienvenido a tu panel de control",
+    "createNew": "Crear nuevo",
+    "metrics": {
+      "totalUsers": "Total de usuarios",
+      "revenue": "Ingresos",
+      "activeProjects": "Proyectos activos",
+      "completedTasks": "Tareas completadas",
+      "lastMonth": "desde el mes pasado",
+      "thisWeek": "nuevos esta semana",
+      "lastWeek": "desde la semana pasada"
+    },
+    "recentActivity": {
+      "title": "Actividad reciente",
+      "userCreatedProject": "creó un nuevo proyecto",
+      "userCompletedTask": "completó una tarea",
+      "userUploadedFiles": "subió archivos",
+      "timeAgo": {
+        "hoursAgo": "Hace {hours} horas",
+        "yesterday": "Ayer"
+      }
+    },
+    "upcomingTasks": {
+      "title": "Próximas tareas",
+      "reviewProposal": "Revisar propuesta del cliente",
+      "updateDocs": "Actualizar documentación",
+      "teamMeeting": "Reunión de equipo",
+      "dueTomorrow": "Vence mañana",
+      "dueInDays": "Vence en {days} días",
+      "fridayMeeting": "Viernes 10:00 AM",
+      "status": {
+        "pending": "Pendiente",
+        "inProgress": "En progreso",
+        "scheduled": "Programado"
+      }
+    }
+  },
+  "login": {
+    "validations": {
+      "usernameRequired": "El nombre de usuario es obligatorio",
+      "usernameInvalid": "El nombre de usuario no es válido",
+      "passwordRequired": "La contraseña es obligatoria",
+      "passwordMinLength": "La contraseña debe tener al menos 8 caracteres"
+    }
+  },
+  "user": {
+    "profile": "Perfil",
+    "settings": "Configuración",
+    "logout": "Cerrar sesión"
+  },
+  "common": {
+    "search": "Buscar",
+    "notifications": "Notificaciones",
+    "language": "Idioma",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "success": "Éxito",
+    "error": "Error",
+    "loading": "Cargando...",
+    "noData": "No hay datos disponibles",
+    "delete": "Eliminar",
+    "confirmDelete": "Confirmar eliminación",
+    "confirmDeleteDescription": "¿Estás seguro de que deseas eliminar este elemento? Esta acción no se puede deshacer."
+  },
+  "products": {
+    "title": "Productos",
+    "welcome": "Gestiona tus productos aquí",
+    "addNew": "Agregar nuevo producto",
+    "edit": "Editar producto",
+    "delete": "Eliminar producto",
+    "name": "Nombre del producto",
+    "description": "Descripción",
+    "price": "Precio",
+    "actions": "Acciones",
+    "noProducts": "No hay productos disponibles.",
+    "table": {
+      "columns": {
+        "id": "ID",
+        "name": "Nombre",
+        "unit": "Unidad",
+        "price": "Precio",
+        "price_sale_to_business": "Precio venta a negocio",
+        "wholesale_price": "Precio al por mayor",
+        "wholesale_price_starting_at": "Precio al por mayor desde",
+        "actions": "Acciones",
+        "edit": "Editar",
+        "delete": "Eliminar"
+      }
+    },
+    "form": {
+      "create": {
+        "title": "Crear nuevo producto",
+        "submit": "Crear producto"
+      },
+      "edit": {
+        "title": "Editar producto",
+        "submit": "Actualizar producto"
+      },
+      "name": "Nombre del producto",
+      "name_placeholder": "Ingresa el nombre del producto",
+      "unit": "Unidad",
+      "unit_placeholder": "Ingresa la unidad (e.g., pieza, kg)",
+      "price": "Precio",
+      "price_placeholder": "Ingresa el precio",
+      "price_sale_to_business": "Precio de venta a negocio",
+      "price_sale_to_business_placeholder": "Ingresa el precio de venta a negocio",
+      "wholesale_price": "Precio al por mayor",
+      "wholesale_price_placeholder": "Ingresa el precio al por mayor",
+      "wholesale_price_starting_at": "Precio al por mayor desde",
+      "wholesale_price_starting_at_placeholder": "Ingresa el precio al por mayor desde"
+    },
+    "errors": {
+      "fetchFailed": "Error al obtener los productos. Por favor, inténtalo de nuevo más tarde.",
+      "createFailed": "Error al crear el producto. Por favor, inténtalo de nuevo.",
+      "updateFailed": "Error al actualizar el producto. Por favor, inténtalo de nuevo.",
+      "deleteFailed": "Error al eliminar el producto. Por favor, inténtalo de nuevo."
+    },
+    "messages": {
+      "createSuccess": "Producto creado exitosamente.",
+      "updateSuccess": "Producto actualizado exitosamente.",
+      "deleteSuccess": "Producto eliminado exitosamente."
+    }
+  },
+  "faqs": {
+    "title": "Preguntas Frecuentes",
+    "welcome": "Encuentra respuestas a las preguntas más comunes",
+    "addNew": "Agregar nueva pregunta",
+    "edit": "Editar pregunta",
+    "delete": "Eliminar pregunta",
+    "question": "Pregunta",
+    "answer": "Respuesta",
+    "actions": "Acciones",
+    "noFaqs": "No hay preguntas frecuentes disponibles.",
+    "table": {
+      "columns": {
+        "id": "ID",
+        "question": "Pregunta",
+        "answer": "Respuesta",
+        "actions": "Acciones",
+        "edit": "Editar",
+        "delete": "Eliminar"
+      }
+    },
+    "form": {
+      "create": {
+        "title": "Crear nueva pregunta frecuente",
+        "submit": "Crear pregunta"
+      },
+      "edit": {
+        "title": "Editar pregunta frecuente",
+        "submit": "Actualizar pregunta"
+      },
+      "question": "Pregunta",
+      "question_placeholder": "Ingresa la pregunta",
+      "answer": "Respuesta",
+      "answer_placeholder": "Ingresa la respuesta"
+    },
+    "errors": {
+      "fetchFailed": "Error al obtener las preguntas frecuentes. Por favor, inténtalo de nuevo más tarde.",
+      "createFailed": "Error al crear la pregunta. Por favor, inténtalo de nuevo.",
+      "updateFailed": "Error al actualizar la pregunta. Por favor, inténtalo de nuevo.",
+      "deleteFailed": "Error al eliminar la pregunta {name}. Por favor, inténtalo de nuevo."
+    },
+    "messages": {
+      "createSuccess": "Pregunta creada exitosamente.",
+      "updateSuccess": "Pregunta actualizada exitosamente.",
+      "deleteSuccess": "Pregunta {name} eliminada exitosamente."
+    }
+  },
+  "chat": {
+    "title": "Probar Chat",
+    "welcome": "Prueba el chat con el modelo AI",
+    "inputPlaceholder": "Escribe tu mensaje aquí...",
+    "send": "Enviar",
+    "status": {
+      "typing": "El asistente está escribiendo...",
+      "error": "Error al enviar el mensaje. Por favor, inténtalo de nuevo."
+    }
+  },
+  "session": {
+    "expired": "Sesión expirada",
+    "pleaseLogin": "Por favor, inicia sesión nuevamente."
+  }
+}
