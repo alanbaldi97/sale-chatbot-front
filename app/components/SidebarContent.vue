@@ -38,7 +38,12 @@ const routes: Route[] = [
   {
     path: '/',
     name:  $t('nav.dashboard'),
-    icon: 'i-heroicons-home'
+    icon: 'i-heroicons-home-modern'
+  },
+  {
+    path: '/orders',
+    name:  $t('nav.orders'),
+    icon: 'i-heroicons-shopping-bag'
   },
   {
     path: '/products',

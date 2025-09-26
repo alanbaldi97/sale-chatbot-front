@@ -8,7 +8,8 @@
     "help": "Ayuda",
     "products": "Productos",
     "faqs": "Preguntas Frecuentes",
-    "chat": "Probar Chat"
+    "chat": "Probar Chat",
+    "orders": "Órdenes"
   },
   "dashboard": {
     "title": "Dashboard",
@@ -188,6 +189,50 @@
     "status": {
       "typing": "El asistente está escribiendo...",
       "error": "Error al enviar el mensaje. Por favor, inténtalo de nuevo."
+    }
+  },
+  "orders": {
+    "title": "Órdenes",
+    "welcome": "Gestiona tus órdenes aquí",
+    "addNew": "Agregar nueva orden",
+    "edit": "Editar orden",
+    "delete": "Eliminar orden",
+    "noOrders": "No hay órdenes disponibles.",
+    "filterByDate": "Filtrar por fecha",
+    "filterBySearchPlaceholder": "cliente, #orden, teléfono",
+    "filterBySearch": "Buscar",
+    "noAddress": "Sin dirección",
+    "table": {
+      "columns": {
+        "id": "ID",
+        "orderNumber": "Número de orden",
+        "customerName": "Nombre del cliente",
+        "customerPhone": "Teléfono del cliente",
+        "date": "Fecha",
+        "status": "Estado",
+        "totalAmount": "Monto total",
+        "actions": "Acciones",
+        "order_details": {
+          "header": "Detalles de la orden",
+          "productName": "Nombre del producto",
+          "quantity": "Cantidad",
+          "price": "Precio",
+          "total": "Total"
+        },
+        "shipping": {
+          "header": "Envío",
+          "type": "Tipo",
+          "address": "Dirección"
+        }
+      }
+    },
+    
+    "status": {
+      "pending": "Pendiente",
+      "processing": "En proceso",
+      "shipped": "Enviado",
+      "delivered": "Entregado",
+      "canceled": "Cancelado"
     }
   },
   "session": {

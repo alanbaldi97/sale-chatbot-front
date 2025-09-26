@@ -8,6 +8,7 @@ const props = defineProps<{
   pageSizeOptions?: number[];
   initialPageSize?: number;
   url: string;
+  requestFilters?: Record<string, any>;
 }>();
 
 const loading: Ref<boolean> = ref(false);
@@ -20,15 +21,16 @@ const pagination = ref({
   total: 0
 });
 
-
 const fetchData = async () => {
  try {
     loading.value = true;
     const page = pagination.value.pageIndex + 1; // Convert to 1-based index for the API
+    const filters = props.requestFilters ? mapFilters(props.requestFilters) : {};
     const response = await useFetchRequest<{ items: any[]; total: number }>(props.url, {
       params: {
         page,
-        pageSize: pagination.value.pageSize
+        pageSize: pagination.value.pageSize,
+        ...filters
       }
     });
     data.value = response.items;
@@ -43,6 +45,16 @@ const fetchData = async () => {
   } finally {
     loading.value = false;
   }
+};
+
+const mapFilters = (filters: Record<string, any>) => {
+  const mapped: Record<string, any> = {};
+  for (const key in filters) {
+    if (filters[key] !== undefined && filters[key] !== null && filters[key] !== '') {
+      mapped[`filter[${key}]`] = filters[key];
+    }
+  }
+  return mapped;
 };
 
 const onChangePage = (page: number) => {

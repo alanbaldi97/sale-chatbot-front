@@ -8,8 +8,8 @@ export default defineNuxtPlugin(() => {
     events.$subscribe(async (mutation, state) => {
         if (state.lastEvent === 'session-expired') {
             toast.add({
-                title: 'Session Expired',
-                description: 'Your session has expired. Please log in again.',
+                title: $t('session.expired'),
+                description: $t('session.pleaseLogin'),
                 icon: 'i-heroicons-exclamation-circle',
                 color: 'warning',
             });

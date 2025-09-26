@@ -51,13 +51,12 @@ const onSubmit = async (message: any) => {
         messages.value.push({
             id: generateUuidBot(),
             role: 'assistant',
-            as: 'p',
             parts: [
                 {
                     type: 'text',
                     text: response.response
                 }
-            ]
+            ],
         });
 
         status.value = 'ready';
@@ -67,8 +66,8 @@ const onSubmit = async (message: any) => {
         if (error?.response?.status === 422) {
             messages = error.response._data.data.detail.map((err: any) => err.msg).join(', ') || $t('faqs.errors.updateFailed');
         }
-        console.log(messages);
         status.value = 'error';
+
     }
 
 };
@@ -76,7 +75,7 @@ const onSubmit = async (message: any) => {
 </script>
 
 <template>
-  <div class="space-y-6">
+  <div class="space-y-6 flex flex-col h-full">
     <div class="flex items-center justify-between">
         <div>
             <h1 class="text-2xl font-bold text-gray-900 dark:text-white">
@@ -86,7 +85,7 @@ const onSubmit = async (message: any) => {
     </div>
     <UCard>
         
-        <UChatPalette class="h-[600px]">
+        <UChatPalette class="h-[500px] md:h-[600px] lg:h-[700px]">
             <UChatMessages :messages="messages" :status="status" auto-scroll
             :assistant="{
                 avatar: {

@@ -10,12 +10,6 @@
           {{ $t('dashboard.welcome') }}
         </p>
       </div>
-      <UButton color="info" size="lg">
-        <template #leading>
-          <UIcon name="i-heroicons-plus" />
-        </template>
-        {{ $t('dashboard.createNew') }}
-      </UButton>
     </div>
 
     <!-- Métricas principales -->
