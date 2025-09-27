@@ -4,21 +4,26 @@ import type { TableColumn } from '@nuxt/ui';
 import type { Order, OrderDetail, Shipping } from '~/interfaces/order';
 import { CalendarDate, DateFormatter, getLocalTimeZone } from '@internationalized/date';
 
+const toast = useToast();
+
 const expanded = ref<{ [key: string]: boolean }>({});
 
 const tableRef = ref<InstanceType<typeof import('~/components/ServerSideTable.vue').default> | null>(null);
 
 const now = new Date();
 
+const loading = ref<boolean>(false);
 
 const df = new DateFormatter('es-MX', {
   dateStyle: 'medium'
-})
+});
+
+const selectStatus = ref<string>('');
 
 const modelValue = shallowRef({
   start: new CalendarDate(now.getFullYear(), now.getMonth() + 1, now.getDate()),
   end: new CalendarDate(now.getFullYear(), now.getMonth() + 1, now.getDate())
-})
+});
 
 const search = ref<string>('');
 
@@ -114,6 +119,8 @@ const filters = computed(() => {
 
     f.search = search.value || undefined;
 
+    f.status = selectStatus.value || undefined;
+
     if (modelValue.value.start) {
         const formattedStart = modelValue.value.start.toDate(getLocalTimeZone());
         f.start = `${formattedStart.getFullYear()}-${(formattedStart.getMonth() + 1).toString().padStart(2, '0')}-${formattedStart.getDate().toString().padStart(2, '0')}`;
@@ -128,13 +135,46 @@ const filters = computed(() => {
 });
 
 const onSearch = () => {
-
     tableRef.value?.refresh(true);
 }
 
 const clearFilters = () => {
     search.value = '';
     onSearch();
+}
+
+const exportToExcel = async () => {
+    try {
+        loading.value = true;
+        const url = `/api/orders/export-excel`;
+
+        const data: any = await useFetchRequest(url, {
+            method: 'GET',
+            params: mapFilters(filters.value),
+            responseType: 'blob'
+        });
+
+        if (data) {
+            const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = `orders_${new Date().toISOString().split('T')[0]}.xlsx`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            onSearch();
+        }
+
+    } catch (error) {
+        toast.add({
+            title: 'Error',
+            description: $t('orders.errors.exportFailed'),
+            icon: 'i-heroicons-x-circle',
+            color: 'error',
+        });
+    }finally {
+        loading.value = false;
+    }
 }
 
 </script>
@@ -176,7 +216,7 @@ const clearFilters = () => {
                             </template>
                         </UInput>
                     </div>
-                    <div >
+                    <div>
                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                             {{ $t('orders.filterByDate') }}
                         </label>
@@ -201,8 +241,53 @@ const clearFilters = () => {
                             </template>
                         </UPopover>
                     </div>
+                    <div>
+                        <USelect
+                            v-model="selectStatus"
+                            :items="[
+                                { label: 'Pendiente', value: 'pending' },
+                                { label: 'Exportado', value: 'exported' }
+                            ]"
+                            value-key="value"
+                            label-key="label"
+                            :placeholder="$t('orders.table.columns.status')"
+                            class="w-48"
+                            clearable
+                            :searchable="false" >
+                        
+                            <template #item-label="{ item }">
+                                <UBadge
+                                    :class="{
+                                        'bg-yellow-100 text-yellow-800': item.value === 'pending',
+                                        'bg-blue-100 text-blue-800': item.value === 'exported'
+                                    }"
+                                    size="md"
+                                    class="capitalize font-medium"
+                                >
+                                    {{ $t(`orders.status.${item.value}`) }}
+                                </UBadge>
+                            </template>
+                            <template #default="{ modelValue }">
+                                <UBadge
+                                    :class="{
+                                        'bg-yellow-100 text-yellow-800': modelValue === 'pending',
+                                        'bg-blue-100 text-blue-800': modelValue === 'exported'
+                                    }"
+                                    size="md"
+                                    class="capitalize font-medium"
+                                    v-if="modelValue"
+
+                                >
+                                    {{ $t(`orders.status.${modelValue}`) }}
+                                </UBadge>
+                            </template>
+                        </USelect>
+                    </div>
                 </div>
                 <div class="flex-1 flex justify-end">
+                    <UButton color="success" variant="solid" icon="i-lucide-file-spreadsheet" class="mr-2 dark:bg-green-600 dark:hover:bg-green-700" :loading="loading" @click="exportToExcel">
+                        {{ $t('orders.exportToExcel') }}
+                    </UButton>
                     <UButton color="primary" variant="solid" icon="i-lucide-search" @click="onSearch">
                         {{ $t('orders.filterBySearch') }}
                     </UButton>
@@ -225,10 +310,7 @@ const clearFilters = () => {
                 <UBadge
                     :class="{
                         'bg-yellow-100 text-yellow-800': row.original.status === 'pending',
-                        'bg-blue-100 text-blue-800': row.original.status === 'processing',
-                        'bg-purple-100 text-purple-800': row.original.status === 'shipped',
-                        'bg-green-100 text-green-800': row.original.status === 'delivered',
-                        'bg-red-100 text-red-800': row.original.status === 'canceled',
+                        'bg-blue-100 text-blue-800': row.original.status === 'exported'
                     }"
                     size="md"
                     class="capitalize font-medium"

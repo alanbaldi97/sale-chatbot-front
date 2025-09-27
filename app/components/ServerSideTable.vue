@@ -47,16 +47,6 @@ const fetchData = async () => {
   }
 };
 
-const mapFilters = (filters: Record<string, any>) => {
-  const mapped: Record<string, any> = {};
-  for (const key in filters) {
-    if (filters[key] !== undefined && filters[key] !== null && filters[key] !== '') {
-      mapped[`filter[${key}]`] = filters[key];
-    }
-  }
-  return mapped;
-};
-
 const onChangePage = (page: number) => {
   pagination.value.pageIndex = page - 1;
   fetchData();

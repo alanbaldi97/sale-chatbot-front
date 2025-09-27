@@ -1,4 +1,6 @@
-export default defineNuxtPlugin(() => {
+export default defineNuxtPlugin((nuxtApp) => {
+    const { $t } = nuxtApp.vueApp.config.globalProperties
+
     const events = useEventsStore()
     const authStore = useAuthStore()
     const router = useRouter()

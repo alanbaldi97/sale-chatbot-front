@@ -202,6 +202,7 @@
     "filterBySearchPlaceholder": "cliente, #orden, teléfono",
     "filterBySearch": "Buscar",
     "noAddress": "Sin dirección",
+    "exportToExcel": "Exportar a Excel",
     "table": {
       "columns": {
         "id": "ID",
@@ -226,13 +227,16 @@
         }
       }
     },
-    
+    "errors": {
+      "exportFailed": "Error al exportar las órdenes. Por favor, inténtalo de nuevo más tarde."
+    },
     "status": {
       "pending": "Pendiente",
       "processing": "En proceso",
       "shipped": "Enviado",
       "delivered": "Entregado",
-      "canceled": "Cancelado"
+      "canceled": "Cancelado",
+      "exported": "Exportado"
     }
   },
   "session": {

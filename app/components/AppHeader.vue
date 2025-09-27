@@ -45,7 +45,7 @@
       />
 
       <!-- Avatar del usuario -->
-      <UDropdownMenu :items="userMenuItems" :popper="{ placement: 'bottom-end' }">
+      <UDropdownMenu :items="items" :popper="{ placement: 'bottom-end' }">
         <UButton
           variant="ghost"
           class="p-1 hover:bg-slate-100 dark:hover:bg-slate-700 ring-2 ring-transparent hover:ring-indigo-400 dark:hover:ring-purple-400 rounded-full transition-all duration-200"
@@ -62,6 +62,7 @@
 </template>
 
 <script setup lang="ts">
+import type { DropdownMenuItem } from '@nuxt/ui';
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 
 interface Props {
@@ -81,23 +82,32 @@ defineEmits<Emits>()
 const isFullscreen = ref(false)
 const { t } = useI18n()
 
-// Estructura del menú de usuario para UDropdown
-const userMenuItems = computed(() => [
-  [{
-    label: t('user.profile'),
-    icon: 'i-heroicons-user-circle',
-    click: handleProfileClick
-  }, {
-    label: t('user.settings'),
-    icon: 'i-heroicons-cog-8-tooth',
-    click: handleSettingsClick
-  }], [{
-    label: t('user.logout'),
+const items: DropdownMenuItem[] = [
+  {
+    label: 'Logout',
     icon: 'i-heroicons-arrow-left-on-rectangle',
-    click: handleLogoutClick,
+    onSelect: () => handleLogoutClick(),
     class: 'text-red-500 dark:text-red-400'
-  }]
-])
+  }
+]
+
+// Estructura del menú de usuario para UDropdown
+// const userMenuItems = computed(() => [
+//   [{
+//     label: t('user.profile'),
+//     icon: 'i-heroicons-user-circle',
+//     click: handleProfileClick
+//   }, {
+//     label: t('user.settings'),
+//     icon: 'i-heroicons-cog-8-tooth',
+//     click: handleSettingsClick
+//   }], [{
+//     label: t('user.logout'),
+//     icon: 'i-heroicons-arrow-left-on-rectangle',
+//     click: handleLogoutClick,
+//     class: 'text-red-500 dark:text-red-400'
+//   }]
+// ])
 
 // Función para toggle fullscreen
 const toggleFullscreen = async () => {
@@ -139,7 +149,10 @@ const handleSettingsClick = () => {
   console.log('Configuración')
 }
 
-const handleLogoutClick = () => {
+const handleLogoutClick = async () => {
   console.log('Cerrar sesión')
+  const authStore = useAuthStore()
+  await authStore.logout()
+  navigateTo('/login')
 }
 </script>

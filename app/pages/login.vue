@@ -31,8 +31,6 @@ const isLoading = ref(false)
 
 const onSubmit = async (event: FormSubmitEvent<Schema>) => {
 
-  console.log('Formulario enviado:', state)
-
   isLoading.value = true
   try {
 
