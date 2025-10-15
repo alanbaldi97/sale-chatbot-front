@@ -13,6 +13,11 @@ export default defineAppConfig({
         kbds: "hidden lg:inline-flex items-center shrink-0 gap-0.5 not-first-of-type:before:content-['·'] not-first-of-type:before:me-0.5",
         kbdsSize: 'sm'
       }
+    },
+    modal: {
+      slots: {
+        overlay: 'backdrop-blur-xs bg-black/5 dark:bg-black/50',
+      }
     }
   }
 })
