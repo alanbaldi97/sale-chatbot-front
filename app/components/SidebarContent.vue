@@ -37,11 +37,6 @@ defineEmits(['close'])
 const routes: Route[] = [
   {
     path: '/',
-    name:  $t('nav.dashboard'),
-    icon: 'i-heroicons-home-modern'
-  },
-  {
-    path: '/orders',
     name:  $t('nav.orders'),
     icon: 'i-heroicons-shopping-bag'
   },
@@ -59,47 +54,7 @@ const routes: Route[] = [
     path: '/chat',
     name: $t('nav.chat'),
     icon: 'i-heroicons-chat-bubble-left-right'
-  },
-  // {
-  //   path: '/admin/team',
-  //   name: $t('nav.team'),
-  //   icon: 'i-heroicons-folder',
-  //   children: [
-  //     {
-  //       path: "/admin/team/members",
-  //       name: "Miembros",
-  //       icon: "i-heroicons-user-group"
-  //     },
-  //     {
-  //       path: "/admin/team/roles",
-  //       name: " Roles y Permisos",
-  //       icon: "i-heroicons-identification"
-  //     },
-  //     {
-  //       path: "/admin/team/departments",
-  //       name: "Departamentos",
-  //       icon: "i-heroicons-building-office"
-  //     }
-  //   ]
-  // },
-  // {
-  //   section: true,
-  //   path: '/',
-  //   name: "Herramientas",
-  //   icon: 'i-heroicons-cog-8-tooth',
-  //   children: [
-  //     {
-  //       path: "/admin/settings",
-  //       name: $t('nav.settings'),
-  //       icon: "i-heroicons-cog-8-tooth"
-  //     },
-  //     {
-  //       path: "/admin/help",
-  //       name: $t('nav.help'),
-  //       icon: "i-heroicons-question-mark-circle"
-  //     }
-  //   ]
-  // }
+  }
 ]
 
 </script>
