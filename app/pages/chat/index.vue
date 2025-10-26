@@ -72,6 +72,34 @@ const onSubmit = async (message: any) => {
 
 };
 
+const loadConversation = async () => {
+    try {
+
+        const data: any = await useFetchRequest(`/api/chat/${authStore.user.id}`, {
+            method: 'GET',
+        });
+
+        messages.value = data.map((item: any) => ({
+            id: item.sender === "user" ? item.user_id : generateUuidBot(),
+            role: item.sender === "user" ? 'user' : 'assistant',
+            parts: [
+                {
+                    type: 'text',
+                    text: item.message
+                }
+            ]
+        }));
+
+    } catch (error: any) {
+        console.error('Failed to load conversation:', error);
+    }
+};
+
+
+onMounted(() => {
+    loadConversation();
+});
+
 </script>
 
 <template>

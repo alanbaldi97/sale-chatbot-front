@@ -242,5 +242,14 @@
   "session": {
     "expired": "Sesión expirada",
     "pleaseLogin": "Por favor, inicia sesión nuevamente."
+  },
+  "configuration": {
+    "title": "Configuración",
+    "onOff": "Respuesta automática",
+    "hourRange": "Rango de horas",
+    "startHour": "Hora de inicio",
+    "endHour": "Hora de fin",
+    "savedSuccess": "Configuración guardada exitosamente.",
+    "getError": "Error al obtener la configuración. Por favor, inténtalo de nuevo."
   }
 }
