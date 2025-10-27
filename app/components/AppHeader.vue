@@ -17,9 +17,6 @@
     <!-- Acciones del usuario -->
     <div class="flex items-center space-x-2">
       
-      <!-- Selector de idioma -->
-      <LanguageSelector />
-      
       <!-- Notificaciones -->
       <UButton
         icon="i-heroicons-bell"
