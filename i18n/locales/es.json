@@ -63,6 +63,7 @@
     "logout": "Cerrar sesión"
   },
   "common": {
+    "warning": "Advertencia",
     "search": "Buscar",
     "notifications": "Notificaciones",
     "language": "Idioma",
@@ -110,6 +111,11 @@
         "title": "Editar producto",
         "submit": "Actualizar producto"
       },
+      "add_price_board": "Agregar tabla de precios",
+      "quantity": "Cantidad",
+      "quantity_placeholder": "Ingresa la cantidad mínima para este precio",
+      "price_board_price": "Precio",
+      "price_board_price_placeholder": "Ingresa el precio para esta cantidad",
       "name": "Nombre del producto",
       "name_placeholder": "Ingresa el nombre del producto",
       "unit": "Unidad",
@@ -127,7 +133,8 @@
       "fetchFailed": "Error al obtener los productos. Por favor, inténtalo de nuevo más tarde.",
       "createFailed": "Error al crear el producto. Por favor, inténtalo de nuevo.",
       "updateFailed": "Error al actualizar el producto. Por favor, inténtalo de nuevo.",
-      "deleteFailed": "Error al eliminar el producto. Por favor, inténtalo de nuevo."
+      "deleteFailed": "Error al eliminar el producto. Por favor, inténtalo de nuevo.",
+      "noPriceBoards": "Por favor, agrega al menos una tabla de precios."
     },
     "messages": {
       "createSuccess": "Producto creado exitosamente.",

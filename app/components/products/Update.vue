@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import * as z from "zod";
-import type { FormSubmitEvent } from '@nuxt/ui'
+import type { FormSubmitEvent, TableColumn } from '@nuxt/ui'
 import type { Product } from "~/interfaces/product";
 
 const props = defineProps<{
@@ -22,8 +22,26 @@ const schema = z.object({
     unit: z.string().min(1),
     price_sale_to_business: z.number().min(0),
     wholesale_price: z.number().min(0),
-    wholesale_price_starting_at: z.number().min(0)
+    wholesale_price_starting_at: z.number().min(0),
+    price_boards: z.array(z.object({
+        quantity: z.number().min(0.5),
+        price: z.number().min(0),
+    }))
 })
+
+const columnsPrices: TableColumn<{
+    quantity: number;
+    price: number;
+}>[] = [
+    {
+        accessorKey: 'quantity',
+        header: $t('products.form.quantity') as string,
+    },
+    {
+        accessorKey: 'price',
+        header: $t('products.form.price_board_price') as string,
+    }
+];
 
 type Schema = z.infer<typeof schema>
 
@@ -33,7 +51,8 @@ const product = reactive<Schema>({
     unit: props.product?.unit || '',
     price_sale_to_business: props.product?.price_sale_to_business || 0,
     wholesale_price: props.product?.wholesale_price || 0,
-    wholesale_price_starting_at: props.product?.wholesale_price_starting_at || 0
+    wholesale_price_starting_at: props.product?.wholesale_price_starting_at || 0,
+    price_boards: props.product?.price_boards || []
 })
 
 watch(() => props.open, (newVal) => {
@@ -47,11 +66,23 @@ watch(() => props.product, (newProduct) => {
     product.price_sale_to_business = newProduct?.price_sale_to_business || 0;
     product.wholesale_price = newProduct?.wholesale_price || 0;
     product.wholesale_price_starting_at = newProduct?.wholesale_price_starting_at || 0;
+    product.price_boards = newProduct?.price_boards || [];
 });
 
 const onSubmit = async (event: FormSubmitEvent<Schema>) => {
     loading.value = true;
     try {
+
+        if (event.data.price_boards.length === 0) {
+            toast.add({
+                title: $t('common.error'),
+                description: $t('products.errors.noPriceBoards'),
+                icon: 'i-heroicons-x-circle',
+                color: 'warning',
+            });
+            return;
+        }
+
         await useFetchRequest(`/api/products/${props.product?.id}`, {
             method: 'PUT',
             body: event.data
@@ -79,6 +110,17 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
 
 const close = () => {
     emit('close');
+    resetForm();
+}
+
+const resetForm = () => {
+    product.name = '';
+    product.price = 1;
+    product.unit = '';
+    product.price_sale_to_business = 0;
+    product.wholesale_price = 0;
+    product.wholesale_price_starting_at = 0;
+    product.price_boards = [];
 }
 
 
@@ -135,24 +177,34 @@ const close = () => {
                         class="w-full"
                     />
                 </UFormField>
-                <UFormField :label="$t('products.form.wholesale_price')" name="wholesale_price" class="space-y-2">
-                    <UInput
-                        v-model="product.wholesale_price"
-                        type="number"
-                        :label="$t('products.form.wholesale_price')"
-                        :placeholder="$t('products.form.wholesale_price_placeholder')"
-                        class="w-full"
-                    />
-                </UFormField>
-                <UFormField :label="$t('products.form.wholesale_price_starting_at')" name="wholesale_price_starting_at" class="space-y-2">
-                    <UInput
-                        v-model="product.wholesale_price_starting_at"
-                        type="number"
-                        :label="$t('products.form.wholesale_price_starting_at')"
-                        :placeholder="$t('products.form.wholesale_price_starting_at_placeholder')"
-                        class="w-full"
-                    />
-                </UFormField>
+                
+                <div class="w-full flex justify-end">
+                     <UButton
+                        type="button"
+                        color="primary"
+                        size="sm"
+                        @click="product.price_boards.push({ quantity: 1, price: 0 })"
+                    >
+                        {{ $t('products.form.add_price_board') }}
+                    </UButton>
+                </div>
+
+                <UTable class="mt-4" :columns="columnsPrices" :data="product.price_boards">
+                    <template #quantity-cell="{ row }">
+                        <UInput
+                            v-model="row.original.quantity"
+                            type="number"
+                            class="w-full"
+                        />
+                    </template>
+                    <template #price-cell="{ row }">
+                        <UInput
+                            v-model="row.original.price"
+                            type="number"
+                            class="w-full"
+                        />
+                    </template>
+                </UTable>
                 
             </UForm>
         </template>
