@@ -9,7 +9,8 @@
     "products": "Productos",
     "faqs": "Preguntas Frecuentes",
     "chat": "Probar Chat",
-    "orders": "Órdenes"
+    "orders": "Órdenes",
+    "costs": "Costos"
   },
   "dashboard": {
     "title": "Dashboard",

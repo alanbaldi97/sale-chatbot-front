@@ -51,6 +51,11 @@ const routes: Route[] = [
     icon: 'i-heroicons-question-mark-circle'
   },
   {
+    path: '/costs',
+    name: $t('nav.costs'),
+    icon: 'i-heroicons-currency-dollar'
+  },
+  {
     path: '/chat',
     name: $t('nav.chat'),
     icon: 'i-heroicons-chat-bubble-left-right'
