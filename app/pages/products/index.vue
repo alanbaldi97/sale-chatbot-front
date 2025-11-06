@@ -49,9 +49,9 @@ const columns: TableColumn<Product>[] = [
 const tableRef = ref<InstanceType<typeof import('~/components/ServerSideTable.vue').default> | null>(null);
 
 const onRefresh = () => {
+    selectedProduct.value = null;
     openCreateModal.value = false;
     openUpdateModal.value = false;
-    selectedProduct.value = null;
     tableRef.value?.refresh();
 }
 
@@ -68,6 +68,11 @@ const editProduct = (product: Partial<{
     openUpdateModal.value = true;
 }
 
+const onClose = () => {
+    selectedProduct.value = null;
+    openUpdateModal.value = false;
+    openCreateModal.value = false;
+}
 
 
 </script>
@@ -129,7 +134,7 @@ const editProduct = (product: Partial<{
             </template>
 
         </ServerSideTable>
-       <ProductsCreate :open="openCreateModal" @close="openCreateModal = false" @created="onRefresh"/>
-       <ProductsUpdate :open="openUpdateModal" :product="selectedProduct" @close="openUpdateModal = false" @updated="onRefresh"/>
+       <ProductsCreate :open="openCreateModal" @close="onClose" @created="onRefresh"/>
+       <ProductsUpdate :open="openUpdateModal" :product="selectedProduct" @close="onClose" @updated="onRefresh"/>
     </div>
 </template>

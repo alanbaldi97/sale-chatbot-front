@@ -112,6 +112,7 @@
         "title": "Editar producto",
         "submit": "Actualizar producto"
       },
+      "actions": "Acciones",
       "add_price_board": "Agregar tabla de precios",
       "quantity": "Cantidad",
       "quantity_placeholder": "Ingresa la cantidad mínima para este precio",

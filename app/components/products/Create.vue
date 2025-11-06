@@ -45,11 +45,15 @@ const columnsPrices: TableColumn<{
 }>[] = [
     {
         accessorKey: 'quantity',
-        header: $t('products.form.quantity') as string,
+        header: $t('products.form.quantity') as string
     },
     {
         accessorKey: 'price',
         header: $t('products.form.price_board_price') as string,
+    },
+    {
+        accessorKey: 'actions',
+        header: $t('products.form.actions') as string,
     }
 ];
 
@@ -193,6 +197,18 @@ const resetForm = () => {
                             type="number"
                             class="w-full"
                         />
+                    </template>
+                    <template #actions-cell="{ row }">
+                        <div class="flex items-center justify-center space-x-2 w-[40px]">
+                            <UButton
+                                type="button"
+                                color="error"
+                                size="sm"
+                                @click="product.price_boards.splice(row.index, 1)"
+                            >
+                                <UIcon name="i-heroicons-trash" />
+                            </UButton>
+                        </div>
                     </template>
                 </UTable>
                 
