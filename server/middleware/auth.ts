@@ -1,5 +1,18 @@
 export default defineEventHandler(async (event) => {
-  const config = useRuntimeConfig();
+  const url = getRequestURL(event);
+  
+  // Excluir rutas que no necesitan autenticación
+  const publicPaths = [
+    '/api/auth/login',
+    '/api/auth/me',
+    '/_nuxt',
+    '/favicon.ico'
+  ];
+  
+  // Si la ruta es pública, no hacer nada
+  if (publicPaths.some(path => url.pathname.startsWith(path))) {
+    return;
+  }
 
   try {
       const res = await fetchWithAuth<{
@@ -14,7 +27,5 @@ export default defineEventHandler(async (event) => {
      event.context.authenticated = true;
     } catch (error) {
       deleteCookie(event, 'access_token');
-    } finally {
-      return;
     }
 })
