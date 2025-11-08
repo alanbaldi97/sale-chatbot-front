@@ -1,9 +1,11 @@
 export default defineEventHandler(async (event) => {
   const url = getRequestURL(event);
+
+  console.log("Auth middleware:", url.pathname);
   
   // Excluir rutas que no necesitan autenticación
   const publicPaths = [
-    '/api/auth/login',
+    '/login',
     '/api/auth/me',
     '/_nuxt',
     '/favicon.ico'
