@@ -74,3 +74,30 @@ bun run preview
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
 # template-nuxt-dashboard
+
+
+# Run DEV Docker
+
+Construir Imagen
+
+```bash docker build -t nuxt-dev -f Dockerfile.dev . ```
+
+```bash
+    docker run -it --rm \
+    -p 3000:3000 \
+    -v $(pwd):/app \
+    -v /app/node_modules \
+    sale-chatbot-dev
+```
+
+# Run Prod Docker
+
+Construir Imagen
+
+```bash docker build -t nuxt-prod . ```
+
+```bash
+    docker run -d \
+    -p 3000:3000 \
+    sale-chatbot-prod
+```
