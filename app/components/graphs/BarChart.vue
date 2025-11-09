@@ -4,9 +4,7 @@
 
 <script setup lang="ts">
 import { BarChart } from 'vue-chart-3';
-import { Chart, registerables, type ChartData, type ChartOptions } from "chart.js";
-
-Chart.register(...registerables);
+import { type ChartData, type ChartOptions } from "chart.js";
 
 
 const props = defineProps({
