@@ -227,7 +227,8 @@
           "productName": "Nombre del producto",
           "quantity": "Cantidad",
           "price": "Precio",
-          "total": "Total"
+          "total": "Total",
+          "shippingCost": "Costo de envío"
         },
         "shipping": {
           "header": "Envío",
@@ -259,6 +260,7 @@
     "startHour": "Hora de inicio",
     "endHour": "Hora de fin",
     "savedSuccess": "Configuración guardada exitosamente.",
-    "getError": "Error al obtener la configuración. Por favor, inténtalo de nuevo."
+    "getError": "Error al obtener la configuración. Por favor, inténtalo de nuevo.",
+    "shippingCost": "Costo de envío"
   }
 }

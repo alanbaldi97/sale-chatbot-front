@@ -87,6 +87,12 @@
             <UInput type="time" v-model="configuration.end_hour" class="mt-1" icon="i-lucide-clock"/>
           </div>
         </div>
+        <div class="flex flex-wrap justify-between p-1 items-center">
+          <span class="text-md block text-md font-medium text-gray-700 dark:text-gray-300">{{ $t('configuration.shippingCost') }}</span>
+          <div class="w-30">
+            <UInputNumber v-model="configuration.shipping_cost" />
+          </div>
+        </div>
      </template>
      <template #footer>
         <div class="flex justify-end space-x-2 w-full">
@@ -139,7 +145,8 @@ const configuration = ref({
   auto_response: false,
   hour_range: false,
   start_hour: '09:00',
-  end_hour: '18:00'
+  end_hour: '18:00',
+  shipping_cost: 0
 })
 
 const items: DropdownMenuItem[] = [
@@ -160,10 +167,17 @@ const items: DropdownMenuItem[] = [
 const getConfiguration = async () => {
   try {
     const configData: any = await useFetchRequest('/api/configuration')
-    configuration.value.auto_response = configData.auto_response
-    configuration.value.hour_range = configData.hour_range
-    configuration.value.start_hour = configData.start_hour
-    configuration.value.end_hour = configData.end_hour
+    
+    const configurationModel = configData?.model_configuration
+    const businessConfiguration = configData?.bussiness_configuration
+
+    configuration.value.auto_response = configurationModel.auto_response
+    configuration.value.hour_range = configurationModel.hour_range
+    configuration.value.start_hour = configurationModel.start_hour
+    configuration.value.end_hour = configurationModel.end_hour
+
+    configuration.value.shipping_cost = businessConfiguration.shipping_cost
+
   } catch (error) {
     toast.add({
       title: 'Error',
@@ -182,7 +196,8 @@ const saveConfiguration = async () => {
       auto_response: configuration.value.auto_response,
       hour_range: configuration.value.hour_range,
       start_hour: configuration.value.hour_range ? configuration.value.start_hour : null,
-      end_hour: configuration.value.hour_range ? configuration.value.end_hour : null
+      end_hour: configuration.value.hour_range ? configuration.value.end_hour : null,
+      shipping_cost: configuration.value.shipping_cost
     }
 
     await useFetchRequest('/api/configuration', {

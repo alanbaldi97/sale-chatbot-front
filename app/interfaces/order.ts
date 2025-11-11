@@ -13,6 +13,7 @@ export interface OrderDetail {
     quantity: number;
     price: number;
     product: Product;
+    shipping_cost: number;
 }
 
 export interface Order {

@@ -91,10 +91,16 @@ const orderDetailsColumns: TableColumn<OrderDetail>[] = [
         header: $t('orders.table.columns.order_details.quantity')
     },
     {
+        accessorKey: 'shipping_cost',
+        header: $t('orders.table.columns.order_details.shippingCost'),
+        cell: info => toCurrency(info.row.original.shipping_cost)
+    },
+    {
         accessorKey: 'total',
         header: $t('orders.table.columns.order_details.total'),
         cell: info => toCurrency((info.row.original.quantity * info.row.original.price))
     }
+    
 ];
 
 const shippingColumns: TableColumn<Shipping>[] = [
@@ -352,6 +358,11 @@ const exportToExcel = async () => {
                         <template #total-cell="{ row }">
                             <UBadge color="success" class="font-bold">
                                {{ toCurrency(row.original.price) }}
+                            </UBadge>
+                        </template>
+                        <template #shipping_cost-cell="{ row }">
+                            <UBadge color="success" class="font-bold">
+                               {{ row.original.shipping_cost ? toCurrency(row.original.shipping_cost) : '-' }}
                             </UBadge>
                         </template>
                     </UTable>
